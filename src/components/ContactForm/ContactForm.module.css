@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    border: solid;
+    padding: 16px;
+}
+.error {
+    color: red; 
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }

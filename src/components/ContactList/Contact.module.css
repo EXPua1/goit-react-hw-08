@@ -1,0 +1,16 @@
+.contacts {
+  display: flex;
+  border: solid;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  gap: 5px;
+}
+.descr {
+  display: flex;
+  align-items: center;
+}
+.inner {
+  width: 200px;
+}
