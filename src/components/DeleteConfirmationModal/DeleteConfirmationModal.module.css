@@ -1,0 +1,48 @@
+/* Модальные стили */
+.modal {
+  position: fixed; /* Фиксированное положение для отображения поверх других элементов */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal_content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 16px; /* Отступ снизу для текста */
+}
+
+.btn {
+  border-radius: 12px;
+  padding: 6px 16px;
+  background-color: hsl(118, 99%, 33%);
+
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn_cancel {
+  border-radius: 12px;
+  padding: 6px 16px;
+  background-color: hsl(345, 90%, 43%);
+
+  border: none;
+  color: white;
+  margin-left: 15px;
+  cursor: pointer;
+}

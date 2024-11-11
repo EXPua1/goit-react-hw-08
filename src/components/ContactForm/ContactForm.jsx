@@ -3,7 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact, fetchContacts } from "../../redux/contactsOps";
+import { addContact, fetchContacts } from "../../redux/contacts/contactsOps";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -26,29 +27,39 @@ const ContactForm = () => {
       number: values.number,
     };
 
-    dispatch(addContact(newContact));
-
+    dispatch(addContact(newContact))
+      .unwrap()
+      .then(() => {
+        toast.success("Successfully added ");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
     resetForm();
   };
 
   return (
-    <Formik
-      initialValues={{ name: "", number: "" }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form}>
-        <label htmlFor="name">Name</label>
-        <Field type="text" name="name" />
-        <ErrorMessage name="name" component="div" className={css.error} />
+    <div className={css.formContainer}>
+      <Formik
+        initialValues={{ name: "", number: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form}>
+          <label htmlFor="name">Name</label>
+          <Field className={css.input} type="text" name="name" />
+          <ErrorMessage name="name" component="div" className={css.error} />
 
-        <label htmlFor="number">Number</label>
-        <Field type="text" name="number" />
-        <ErrorMessage name="number" component="div" className={css.error} />
+          <label htmlFor="number">Number</label>
+          <Field className={css.input} type="text" name="number" />
+          <ErrorMessage name="number" component="div" className={css.error} />
 
-        <button type="submit">Add Contact</button>
-      </Form>
-    </Formik>
+          <button className={css.button} type="submit">
+            Add Contact
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 
